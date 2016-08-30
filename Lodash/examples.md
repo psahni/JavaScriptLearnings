@@ -5,8 +5,10 @@
 2. _.extend or _.assign
 
     var objA = {"name": "colin", "car": "suzuki"};
+    
     var objB = {"name": "james", "age": 17, "city": "Delhi"};
-    document.write(JSON.stringify(_.assign(objA, objB)));
+    
+    document.write(JSON.stringify(_.assign(objA, objB))); 
 
 3. _.fromPairs([['a', 1], ['b', 2]]);
    ➜ { 'a': 1, 'b': 2 }
@@ -28,7 +30,7 @@
 8. _.remove [https://lodash.com/docs#remove]
 
 
-9. 
+9. _.take([1, 2, 3]); -> 1
 
 ### Lodash Console
 * https://jsfiddle.net/psahni/sr8dxdr0/
