@@ -31,6 +31,9 @@
 
 
 9. _.take([1, 2, 3]); -> 1
+   _.take([1, 2, 3], 2); -> [1,2]
+
+10. _takeWhile (https://lodash.com/docs#takeWhile)
 
 ### Lodash Console
 * https://jsfiddle.net/psahni/sr8dxdr0/
