@@ -3,13 +3,13 @@
 1. _.map
 
 2. _.extend or _.assign
-
+```javascript
     var objA = {"name": "colin", "car": "suzuki"};
     
     var objB = {"name": "james", "age": 17, "city": "Delhi"};
     
     document.write(JSON.stringify(_.assign(objA, objB))); 
-
+```
 3. _.fromPairs([['a', 1], ['b', 2]]);
    ➜ { 'a': 1, 'b': 2 }
 
