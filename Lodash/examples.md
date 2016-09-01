@@ -10,11 +10,13 @@
     
     document.write(JSON.stringify(_.assign(objA, objB))); 
 ```
+
 3. _.fromPairs
 ```javscript
 _.fromPairs([['a', 1], ['b', 2]]);
    ➜ { 'a': 1, 'b': 2 }
 ```
+
 4. _.flatten
 
 5. _.indexOf([1, 2, 1, 2], 2);
