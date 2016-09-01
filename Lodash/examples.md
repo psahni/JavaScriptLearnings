@@ -7,8 +7,44 @@
   - Transform one array into another.
 -> map() does not change the original array.
 
+```javascript
+var fruits = [
+  {
+    name: 'apple',
+    price: 1.99,
+    onSale: true
+  },
+  {
+    name: 'orange',
+    price: 0.99,
+    onSale: true
+  }
+];
+
+array = _.map(fruits, function(fruit){
+  return "I eat" + " " + fruit.name
+})
+console.log(fruits);
+```
 
 * _.pluck
+```javascript
+var fruits = [
+  {
+    name: 'apple',
+    price: 1.99,
+    onSale: true
+  },
+  {
+    name: 'orange',
+    price: 0.99,
+    onSale: true
+  }
+];
+
+_.pluck(fruits, 'name');
+// -> ['apple', 'orange']
+```
 
 * _.extend or _.assign
   ```javascript
@@ -50,7 +86,7 @@ _.nth(array, [n=0])
 * _.remove [https://lodash.com/docs#remove]
 
 
-*  _take
+*  _.take
 ```javascript
   _.take([1, 2, 3]); -> 1
    _.take([1, 2, 3], 2); -> [1,2]
@@ -60,4 +96,6 @@ _.nth(array, [n=0])
 
 ### Lodash Console
 * https://jsfiddle.net/psahni/sr8dxdr0/
+## Refs
 * https://leanpub.com/lodashcookbook/read#leanpub-auto-map
+* http://elijahmanor.com/reducing-filter-and-map-down-to-reduce/
