@@ -2,10 +2,10 @@
 
 * _.map
 
--> Transformation:
-  - The map() method creates a new array with the results of calling a function for every array element.
-  - Transform one array into another.
--> map() does not change the original array.
+      -> Transformation:
+        - The map() method creates a new array with the results of calling a function for every array element.
+        - Transform one array into another.
+      -> map() does not change the original array.
 
 ```javascript
 var fruits = [
