@@ -20,8 +20,9 @@ let handleMessage = (message, handler) => handler("Prashant Says " + message);
 handleMessage("Hello", (finalMessage) => console.log(finalMessage));
 ```
 
-```Javascript
 * Object enhancement
+
+```Javascript
 
 var name = "Prashant";
 var city = "Agra";
