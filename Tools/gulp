@@ -1,0 +1,8 @@
+Gulp is task runner from command line.
+
+* Install
+  npm install gulp && npm install gulp -g
+
+* Gulp with ES6
+
+npm install gulp-babel babel-core babel-preset-es2015 --save-dev
