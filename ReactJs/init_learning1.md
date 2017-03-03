@@ -37,8 +37,7 @@
 
 * Re rendering is expensive. That gives rise to VIRTUAL DOM.
 
-* On every update, we build a new virtual dom subtree, take the diff with the old one, computes the minimal set of DOM mutations and puts them in the queue.
-and batch executes all updates.
+* On every update, we build a new virtual dom subtree, take the diff with the old one, computes the minimal set of DOM mutations and puts them in the queue and batch executes all updates.
 
 * Doom 3 engine
 
