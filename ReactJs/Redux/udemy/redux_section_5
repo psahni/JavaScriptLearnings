@@ -76,3 +76,13 @@ actions/index.js
 API_KEY='49320423804fndslfnd748324';
 
 # 56 Introduction to middleware
+
+#- Middleware are like gatekeepers. They inspect the action. They can modify the action.
+#- Intercept the action before passing them to reducers.
+#- A layer between action creator and reducers.
+
+#- Redux Promise
+npm install --save redux-promise
+
+
+#- 57
