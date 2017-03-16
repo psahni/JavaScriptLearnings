@@ -71,17 +71,160 @@ onFormSubmit(event) {
 #- Whether API
 
 actions/index.js
-
 #- save the api key
 API_KEY='49320423804fndslfnd748324';
 
 # 56 Introduction to middleware
 
+#- Middleware - A layer between action creator and reducers.
 #- Middleware are like gatekeepers. They inspect the action. They can modify the action.
 #- Intercept the action before passing them to reducers.
-#- A layer between action creator and reducers.
 
 #- Redux Promise
 npm install --save redux-promise
 
 # 57
+#- actions/index.js
+
+import axios from 'axios';
+export const FETCH_WEATHER = 'FETCH_WEATHER'; // Can be imported in other files.
+
+export function fetchWeather(city) {
+  const url = `..${city}, us`;
+  const request = axios.get(url);
+
+  return {
+    type: FETCH_WEATHER,
+    payload: request
+  };
+}
+
+// fetchWeather is an action creator.
+
+# 58
+#- containers/search_bar.js
+
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { fetchWeather } from '../actions/index'; // import the action creator into search bar container.
+
+#- We want to hook the action creator fetchWeather to our search_bar container.
+
+#- IMP: This is how we connect:-
+``
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ fetchWeather }, dispatch);
+}
+
+export default connect(null, mapDispatchToProps)(SearchBar);
+``
+
+#- This container does not care about the state and mapDispatchToProps is always the second argument in the connect function,
+hence the first argument is null.
+
+#- In containers/search_bar.js
+``
+onFormSubmit(event) {
+  event.preventDefault();
+
+  this.props.fetchWeather(this.state.term);
+  this.setState({term: ''});
+}
+``
+
+# 59
+#- reducers/reducer_weather.js
+
+export default function(state=null, action) {
+  console.log('action received..', action);
+  return state;
+}
+
+#- Once we make a reducer, we need to combine it into rootReducer.
+import WeatherReducer from './reducer_weather';
+
+const rootReducer = combineReducers({
+  weather: WeatherReducer
+});
+
+export default rootReducer;
+
+#-
+export function fetchWeather(city) {
+  const url = `..${city}, us`;
+  const request = axios.get(url);
+
+  return {
+    type: FETCH_WEATHER,
+    payload: request
+  };
+}
+
+// This request is a promise. This will pass as action into the reducer. Redux promise is a middleware.
+// The payload property is modified from the Redux Promise middleware. If it is a promise, it stops the action entirely.
+// It resolves the request( wait for the promise), wait for the result and passes to action in the reducer.
+
+# 60 Avoid State Mutations in Reducers.
+
+#- reducers/reducer_weather.js
+
+import { FETCH_WEATHER }  from '../actions/index.js';
+export default function(state=[], action) {
+  switch(action.type) {
+    case FETCH_WEATHER:
+      //return state.concat([action.payload.data]); // It does not mutates the state, just returns the new state.
+      return [ action.payload.data, ...state ];
+  }
+}
+
+# Continue from 61
+#- containers/weather_list.js
+
+import React, { Component } from 'react';
+import connect from 'react-redux';
+
+
+class WeatherList extends Component {
+  render() {
+    return(
+      <table className="table table-hover">
+        <thead>
+          <tr>
+            <th>City</th>
+            <th>Temprature</th>
+            <th>Pressure</th>
+            <th>Humidity</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    );
+  }
+}
+
+function mapStateToProps({ weather }) {
+  return { weather: weather };
+}
+
+
+// Connect mapStateToProps to the container
+export default connect(mapStateToProps)(WeatherList);
+
+#- In app.js
+
+import WeatherList from '../containers/weather_list.js'
+
+<WeatherList />
+
+#- reducers/reducer_weather.js
+
+#- reducers/index.js
+
+import WeatherReducer from './reducer_weather';
+
+const rootReducer = combineReducers({
+  weather: WeatherReducer
+});
+
+export default rootReducer;
