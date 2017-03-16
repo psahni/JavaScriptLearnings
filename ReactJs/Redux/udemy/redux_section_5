@@ -228,3 +228,116 @@ const rootReducer = combineReducers({
 });
 
 export default rootReducer;
+
+# 62
+
+weather_list.js
+
+renderWeather(cityData) {
+  render cityData.city.name ;
+}
+
+render() {
+  ...
+  <tbody>
+    {this.props.weather.map(this.renderWeather)}
+  </tbody>
+  ..
+}
+
+//this.props.weather containers array of objecs of city data.
+
+[
+  city: {
+
+  },
+  list: {
+
+  }
+]
+
+# 63
+#- React Sparkline for making charts
+
+const temps = cityData.list.map(weather =>  weather.main.temp);
+
+created a colummns for rendering data. Refer sparkline for passing values.
+
+we passed temps values to sparkline.
+
+# 64 Making a reusable chart component.
+
+components/chart.js
+
+Some props come in, just display it. So in this case a functional component is more useful.
+If component state is the concern, then class based component should be used.
+
+
+export default (props) => {
+  return(
+    <Sparklines height={props.height} width={props.width} data={props.data}>
+
+    </Sparklines>
+  )
+}
+
+containers/weather_list
+
+import Chart from '../components/chart'
+
+<Chart data={temps} color='orange'/>
+
+# 65
+
+chart.js
+
+import _ from 'lodash';
+
+function average(data) {
+  return _.round(_.sum(data)/data.length);
+}
+
+export default .. {
+  return (
+    <Sparklines height={props.height} width={props.width} data={props.data}>
+      <SparklinesLine color={props.color} />
+    </Sparklines>
+    <div>{average(props.data)}</div>
+  );
+}
+
+
+# 66 Google Maps integration
+
+components/google_map.js
+
+import react, { Component } from 'react';
+
+class GoogleMap extends Component {
+
+  componentDidMount() {
+    new gogle.maps.Map(this.refs.map, {
+      zoom: 12,
+      center: {
+        lat: this.props.lat,
+        lng: this.props.lng
+      }
+    });
+  }
+
+  render() {
+    return <div ref="map" />;
+  }
+}
+
+export default GoogleMap;
+
+#- ref system is reference...to reference the element on the page.
+
+# 66
+
+Life cycle method - componentDidMount - this method is automatically called.
+
+# 67 mainly about google map rendering
+
+# 68

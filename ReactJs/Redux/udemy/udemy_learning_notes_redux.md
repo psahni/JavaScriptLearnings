@@ -255,7 +255,7 @@ export function selectBook(book) {
 }
 
 
-#- redurces/index.js
+#- reducers/index.js
 
 import { combineReducers } from 'redux';
 import BookReducer from './reducer_books';
