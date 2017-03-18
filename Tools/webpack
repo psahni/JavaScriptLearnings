@@ -1,0 +1,13 @@
+# Installation
+
+npm install --save-dev webpack@2.2.0-rc.0
+
+
+- entry
+- output
+- path module
+- __dirname : It is a reference to current working directory.
+It is a constant in node.js
+
+- npm run build: It will pick the webpack from your node_modules and run it otherwise if you run it
+directly it will pick from globally installed modules

@@ -1,0 +1,91 @@
+* We have learned how to fetch data, we have to learn how to post data.
+
+# Routing in Redux and post apis
+
+# 70 explanation about rest apis reduxblog.herokuapp.com
+
+# 71 React Router
+
+$ npm install react-router@2.0.0.rc5
+
+# 72
+History lib is javascript package, it manages the url. Watches the url.
+Whenevr the url changes, history lib keeps track of it. Monitors it.
+
+History gives the url to React Router. React Router takes it and passed it over to React.
+React Router on the basis of the url and decides and informs the React that these are
+the components you need to render. React shows the content on the basis of the url. Renders the page.
+
+There libs are working:-
+* History
+* React-Router
+* React
+
+# 73
+
+In index.js
+
+import { Router, browserHistory } from 'react-router';
+
+// http://blog.com/posts/5
+// Whenever the later part of the url changes, it tracks it.
+// hashHistory - Monitors what got changed after the '#' in the url
+
+# 74 Routes Configuration
+
+#- src/routes.js
+
+``
+import React from 'react';
+import { Route, IndexRoute } from 'react-router';
+
+import App from './components/app'
+
+//Route:- mapping of url and a component.
+
+const Greeting = () => {
+  return <div>Hey there!</div>
+}
+
+export default (
+  <Route path='/' component={App}>
+    <Route path="greet" component={Greeting} />
+    <Route path="greet2" component={Greeting} />
+    <Route path="greet3" component={Greeting} />
+  </Route>
+)
+
+// /greet  --> App component renders along with greeting component.
+// /greet2 --> App component renders along with greeting component.
+
+``
+# - index.js
+import routes from './routes';
+
+ReactDOM.render(
+  <Provider store={createStoreWithMiddleware(reducers)}>
+    <Router history={browserHistory} routes={routes} />
+  </Provider>
+  , document.querySelector('.container'));
+
+  # 75
+
+#- src/components/app.js
+
+#- App should render greeting component also.
+
+import React from 'react';
+import { Component } from 'react';
+
+export default class App extends Component {
+  render() {
+    return(
+      <div>
+        React Simple Starter
+        {this.props.children} // THIS WILL RENDER GREETING COMPONENT ALSO
+      </div>
+    );
+  }
+}
+
+# Cont. from 76
