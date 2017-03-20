@@ -132,7 +132,7 @@ const createStoreWithMiddleware = applyMiddleware(
 * src/actions/index.js
 
 import axios from 'axios';
-export const FETCH_POSTS='FETCH_POSTS';
+export const FETCH_POSTS = 'FETCH_POSTS';
 const ROOT_URL = 'http://reduxblog.herokuapp.com/api';
 const API_KEY = '?key=abcdefgh';
 
@@ -146,3 +146,68 @@ export function fetchPosts(){
 }
 
 # 78 Catching Data with Posts Reducer.
+
+
+* In index.js inside reducers
+
+``
+import { combineReducers } from 'redux';
+import PostsReducer from  './reducer_posts';
+
+const rootReducer = combineReducer({
+  posts: PostsReducer
+});
+
+export default rootReducer;
+``
+
+* reducers/reducer_posts.js
+
+import { FETCH_POSTS } from '../actions/index';
+
+const INITIAL_STATE = { all: [], post: null }; // Two states: 'all posts' and 'selected post'
+
+export default function(state = INITIAL_STATE, action) {
+  swtich(action.type) {
+    case FETCH_POSTS:
+    default:
+      return state;
+  }
+}
+
+# 79 PostsReducer implementation contd.
+
+* reducers/reducer_posts.js
+
+..
+case FETCH_POSTS:
+    return { ..state, all: action.payload.data };
+..
+
+Data is available in  - action.payload.data
+
+# 80 Life Cycle Methods
+
+* We need to call action creator for fetching list of data.
+
+components/posts_index.js
+
+import React, { Component }
+
+class PostsIndex extends Component {
+  componentWillMount(){
+
+  }
+  render() {
+    return(
+      <div>List of blog posts</div>
+    );
+  }
+}
+
+export default PostsIndex;
+
+* componentWillMount is a life cycle method. React calls this method whenever a component is about to be render.
+It is only called once. Not called on subsequent renders.
+
+# 81 Fetching Data with Life Cycle methods.

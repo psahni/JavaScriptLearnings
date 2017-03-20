@@ -19,3 +19,9 @@ let array1 = [ 'Prashant', 'Ankur', 'Naina'];
 let array2 = [1,2,3,4];
 
 console.log([ ...array2, ...array1]); //[1, 2, 3, 4, "Prashant", "Ankur", "Naina"]
+
+
+Check this:-
+{
+  ...state, all: ['A', 'B', 'C']
+}
