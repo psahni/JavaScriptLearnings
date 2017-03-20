@@ -211,3 +211,21 @@ export default PostsIndex;
 It is only called once. Not called on subsequent renders.
 
 # 81 Fetching Data with Life Cycle methods.
+
+posts_index.js
+
+..
+
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'react-redux';
+import { fetchPosts } from '../actions/index';
+
+..
+
+function mapDistpatchToProps(dispatch) {
+  return bindActionCreators({ fetchPosts }, dispatch );
+}
+
+export default connect(null, mapDistpatchToProps)(PostsIndex);
+
+// It is because of the above line we get access to fetchPosts in props.
