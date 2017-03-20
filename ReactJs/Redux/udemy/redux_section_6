@@ -89,3 +89,60 @@ export default class App extends Component {
 }
 
 # Cont. from 76
+
+components/posts_index.js
+
+* Concept of Index Route
+
+* on root url, we want to render only App component. On others we want
+to render App, Greeting component.
+
+* src/routes.js
+
+import { Route, IndexRoute } from 'react-router';
+import PostsIndex from './components/posts_index';
+
+..
+
+export default (
+  <Route path='/' component={App}>
+    <IndexRoute componet={PostsIndex}>
+    <Route path="greet" component={Greeting} />
+    <Route path="greet2" component={Greeting} />
+    <Route path="greet3" component={Greeting} />
+  </Route>
+);
+
+# 77 Index Action
+
+npm install --save axios redux-promise
+
+* src/index.js
+
+..
+import reducers from './reducers';
+import routes from './routes';
+import promise from 'redux-promise';
+..
+
+const createStoreWithMiddleware = applyMiddleware(
+  promise
+)(createStore);
+
+* src/actions/index.js
+
+import axios from 'axios';
+export const FETCH_POSTS='FETCH_POSTS';
+const ROOT_URL = 'http://reduxblog.herokuapp.com/api';
+const API_KEY = '?key=abcdefgh';
+
+export function fetchPosts(){
+  const request =  axios.get(`${ROOT_URL}/posts${API_KEY}`);
+
+  return {
+    type: FETCH_POSTS,
+    payload: request
+  }
+}
+
+# 78 Catching Data with Posts Reducer.
