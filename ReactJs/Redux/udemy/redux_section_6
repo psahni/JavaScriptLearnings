@@ -229,3 +229,7 @@ function mapDistpatchToProps(dispatch) {
 export default connect(null, mapDistpatchToProps)(PostsIndex);
 
 // It is because of the above line we get access to fetchPosts in props.
+
+// We can write above two lines or we can write similar thing in following way:-
+
+export default connect(null, { fetchPosts: fetchPosts })(PostsIndex);
