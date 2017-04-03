@@ -599,3 +599,36 @@ Inside render() function
 export default connect(mapStateToProps, )
 
 # 96 Navigation on Delete
+
+* For navigation we need have router contextType.
+
+static contextTypes = {
+  router: PropTypes.object
+}
+
+Then, wherever we need, we can do something like  this.context.router.push('/')
+
+onDeleteClick() {
+  this.props.deletePost(this.props.params.id).then(() => {
+    this.context.router.push('/');
+  });
+}
+
+
+# 97
+
+- List of posts
+- Navigate to post
+- Delete
+- Create a new post
+- Cancel post
+
+
+* In src/index.js. We pass router configuration object instead of the App component.
+The indexRoute will render the App component.
+
+ReactDOM.render(
+  <Provider store={createStoreWithMiddleware(reducers)}>
+    <Router history={browserHistory} routes={routes} />
+  </Provider>
+, document.querySelector('.container'));
