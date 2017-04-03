@@ -439,11 +439,163 @@ class PostsNew extends Component {
   }
 }
 
-- To read parent properties we use context types
+* To read parent properties we use context types
 
 onSubmit(props){
   this.props.createPost(props)
-    .then(() => {      
+    .then(() => {
       this.context.router.push('/');
     })
 }
+
+
+# 91
+class PostsNew extends Component {
+  componentWillMoung() {
+    this.props.fetchPosts();
+  }
+
+  renderPosts() {
+    return this.props.posts.map((post) => {
+      return(
+        <li className="list-group-item" key={post.id}>
+          <span className="pull-xs-right">{post.categories}</span>
+        </li>
+      );
+    });
+  }
+
+  render() {
+    return( this.renderPosts() );
+  }
+}
+
+function mapStateToProps(state) {
+  return { posts: state.posts.all };
+}
+
+export default connect(mapStateToProps, { fetchPosts })(PostsIndex);
+
+# 92
+
+routes.js
+
+export default (
+  <Route path="/" component={App}>
+    ..
+    <Route path="posts/new" component={PostsNew}>
+    <Route path="posts/:id" component={PostsShow}>
+    ..
+  </Route>
+)
+
+* posts_show.js
+import React, { Component } from 'react';
+
+class PostsShow extends Component {
+  render() {
+    return <div>Show post {this.props.params.id}
+  }
+}
+
+* use link component like this:-
+
+import { fetchPosts } from '../actions/index';
+import { Link }  from 'react-router';
+
+<Link to={'posts/' + post.id}>
+    ....
+    <strong>{post.title}</strong>
+</Link>
+
+# 93 Loading data on render
+
+On post show page, we need to show the specific post. So we will create an action creator inside actions/index.js
+'fetchPost' that will fetch the post with specfic id, that will return payload and action. The reducer will grab it.
+
+In PostsShow component
+
+import { fetchPost } from '../actions/index';
+
+class PostsShow extends Component {
+  componentWillMount() {
+    this.props.fetchPost(this.props.params.id);
+  }
+}
+
+export default connect(null, { fetchPost })(PostsShow);
+
+#- actions/index.js
+
+export function fetchPost(id) {
+  const request =  axios.get(`${ROOT_URL}/posts/${id}${API_KEY}`)
+
+  return {
+    type: FETCH_POST,
+    payload: request
+  }
+}
+
+
+#- reducer_posts.js
+
+
+case FETCH_POST:
+  retun {..state, post: action.payload.data };
+
+# 94 Handling Null Props
+
+export function mapStateToProps() {
+  return { post: state.posts.post };
+}
+
+* Component starts rendering but data to render might not be loaded.
+
+if(!this.props.post){
+  return '<div>Loading..</div>';
+}
+
+return (
+  <div>
+    Post information...
+  </div>
+)
+
+# 95 Delete Action Creator.
+actions/index.js
+
+DELETE_POST='DELETE_POST';
+
+..
+
+export function deletePost(id) {
+  const request = axios.delete(`${ROOT_URL}/${id}/${API_KEY}`);
+
+  return {
+    type: DELETE_POST,
+    payload: request
+  }
+}
+
+In PostsShow component:-
+
+import {fetchPost, deletePost} from '../actions/index';
+
+..
+Inside component:-
+
+onDeleteClick() {
+  this.props.deletePost(this.props.params.id)
+}
+
+Inside render() function
+..
+
+<button
+  onClick={this.onDeleteClick.bind(this)}
+>
+</button>
+
+export default connect(mapStateToProps, )
+
+# 96 Navigation on Delete
