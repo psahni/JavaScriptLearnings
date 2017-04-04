@@ -30,3 +30,38 @@ import axios from 'axios';
 
 Good to read:
 https://www.codementor.io/vijayst/using-firebase-with-redux-for-building-a-react-app-du1086puw
+
+# 100 Dynamic forms Redux forms
+
+Removed the repetitive code in the form. Made it dry.
+
+const FIELDS = {
+  title: {
+    label: 'title',
+    type: 'input'
+  }
+}
+
+_.keys(FIELDS, () => {})
+
+# 101 skipped
+
+# 102
+
+Talked about routes callback. How we can call a function when we access some route.
+
+'/photos'.
+
+routes/route_callbacks.js
+
+import store from '../store';
+import { fetchPhotos } from '../actions';
+
+export function onPhotosEnter() {
+  store.dispatch(fetchPhotos());
+}
+
+routes/index.js
+
+import { onPhotosEnter } from './route_callbacks';
+<Route path="photos" component={Photos} onEnter={onPhotosEnter}>
