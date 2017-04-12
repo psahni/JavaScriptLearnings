@@ -1,1 +1,17 @@
 # How to install React or node packages required to get started.
+
+- Babel dependencies
+npm install babel-loader coffee-loader
+npm install babel-core babel-preset-es2015 babel-preset-react
+
+- Install react dependencies
+npm install react react-dom --save
+
+- Install redux dependencies
+npm install redux react-redux --save
+
+- Redux thunk middleware
+npm install redux-thunk --save
+
+- Install react-redux-form
+npm install react-redux-form --save

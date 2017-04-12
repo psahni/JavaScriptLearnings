@@ -11,3 +11,14 @@ It is a constant in node.js
 
 - npm run build: It will pick the webpack from your node_modules and run it otherwise if you run it
 directly it will pick from globally installed modules
+
+
+Good to read. configuration settings mentioned.
+https://github.com/petehunt/webpack-howto
+
+
+How to invoke webpack
+Switch to the directory containing webpack.config.js and run:
+
+$ webpack
+//for building once for development
