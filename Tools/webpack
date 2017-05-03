@@ -22,3 +22,131 @@ Switch to the directory containing webpack.config.js and run:
 
 $ webpack
 //for building once for development
+
+Repositries
+https://github.com/StephenGrider/WebpackCasts
+https://github.com/StephenGrider/WebpackProject
+
+# TOPICS COVERED IN UDEMY PRESENTATION:-
+- Server Side Templating and single page App.
+- Server Side Templating and single page App flow.
+- Spoke about the popularity of SPA.
+- Amount of js code execute is huge on the browser compared to sst. This is the modern web trend.
+- Why type of problems arise when we have huge code of javascript ?
+
+# S2L4
+- main.js   util.js   home.js
+- Working on large code bases is a challenge. Finding the code..
+- Distribution of code to multiple files makes code easy to locate.
+- So the idea of modules is born.
+- So we have many small files.
+- Components Folder and API folder -- separation of code. (Section 2 Lecture 4)
+- But still there can be challenges. Splitting of files(Modules).
+- Splitting of files into many files is not the complete solution either.
+
+# S2L5
+
+- Load order  :  Order os files loaded should be distict whenver app starts.
+- Performance : Having many files loaded is a bad idea from performance stand point.
+
+- This is exacly how the webpack plays its role.
+- Webpack takes bigger pile of javascripts code and merge them together into one bundle.js
+
+# S2L6
+- Start work on the demo app. npm init generates a new project.
+- package.json contains project depedencies.
+
+# S2L7
+- How index.js will have access to sum.js. We have to form some link between them.
+- Common Js(Impletemented by Node.js ), ES 2015: These are module systems.
+
+# S2L8
+- Explain about linking two files index.js and sum.js
+
+# S2L9
+- Install Webpack.
+
+$ npm install --save-dev webpack@2.2.0-rc.0 - Install it as a project dependency.
+
+- Sum.js + index.js  => Webpack => bundle.js
+
+- webpack.config.js: When we run webpack, it will look automatically this file.
+
+- There must be two pieces of information to b provided in order to run webpack.
+  config = { }
+
+- index.js <- sum.js ( index.js depends upon sum.js. index.js runs our app. It is the entry point our application)
+- This file only imports all things, does not exports any thing.
+
+# S2L10
+  - output property of config is an object.
+  - The 'entry' of config is a relative path, but 'output' must be a absolute path. Its a
+  directory where our bundle.js will be saved.
+  - path.resolve(__dirname, 'build') :- build directory inside current working directory.
+
+# S2L11
+  - webpack command will try to find the webpack from globally installed node modules
+  - 'npm run build' will pick webpack from projects's node_modules
+
+ # S2L12
+  - When we run this command, we find that two files sum.js and index.js are of few bytes(180 and 12) but bundle.js is 3KB
+  which is quite large as compared to sum of these two files. So it must be generating some code as well.
+
+  - If we analyse bundle.js, we find that what webpack does, it takes all modules code and stuffs it into individual functions
+  and stuff those individual functions into an array.
+  - So, no magic is involved.
+
+# S2L13
+  - How to load bundle.js ?
+    We need to have single html file, whose purpose only have to load bundle.js
+
+  - Open the index.html in the browser, that should output the sum in the console.
+  - If you are doing any changes in the js. Then run again :- 'npm run build' or just 'webpack'
+
+# S2L14
+Webpack core purpose is to combine multiple js modules into one bundle.js file.
+
+
+# Setting up babel:-
+
+Three main packages
+- babel-loader
+- babel-core
+- babel-preset-env
+
+$ npm install -g babel-loader babel-core babel-preset-env
+
+# S2L15
+
+* Loader system in webpack
+
+# S2L16 Babel configuration
+
+We want to use babel only for javascript files.
+babel-preset: what are we going to do with files that are loaded.
+
+# S2L17
+
+module.exports = sum; -> common js module sys
+export default sum;  -> es2015 module sys.
+
+# S2L18 Handling css with Webpack
+- To have any file in bundle.js. We have to import the file somewhere
+import './image_viewer'
+
+# S2L19 CSS loaders - Importing a css file
+import '../styles/image_viewer.css' - This statement is written inside image_viewer.js
+
+We have add loaders. CSS loader and Style loader.
+css-loader: just imports the file.
+style-loader: takes the imported file and add its it to the html document.
+
+# S2L20 Loaders are tricky
+Javascript is actually adding the css into the head portion of the html document.
+Normally we expect that bunch of css files are concatened into one css, but it is not the case here.
+
+Wepack writes some generated code into bundle.js, which actually applies the css to the html.
+
+# S3L21 The Extract Text Plugin
+Loading css separately is a better idea than adding it through js.
+There is diff better plugin and a loader. Plugins ensures that the generated file is not included into the bundle.js

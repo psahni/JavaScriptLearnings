@@ -1,0 +1,5 @@
+- What is WebPack ? What is it core purpose ?
+- Why it is becoming popular ?
+- Why do we use build tools ?
+- Why type of problems arise when we have huge code of javascript ?
+
