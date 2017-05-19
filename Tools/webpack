@@ -34,7 +34,7 @@ https://github.com/StephenGrider/WebpackProject
 - Amount of js code execute is huge on the browser compared to sst. This is the modern web trend.
 - Why type of problems arise when we have huge code of javascript ?
 
-# S2L4
+# S2L4 **
 - main.js   util.js   home.js
 - Working on large code bases is a challenge. Finding the code..
 - Distribution of code to multiple files makes code easy to locate.
@@ -46,11 +46,11 @@ https://github.com/StephenGrider/WebpackProject
 
 # S2L5
 
-- Load order  :  Order os files loaded should be distict whenver app starts.
+- Load order  :  Order of files loaded should be distinct whenever app starts.
 - Performance : Having many files loaded is a bad idea from performance stand point.
 
-- This is exacly how the webpack plays its role.
-- Webpack takes bigger pile of javascripts code and merge them together into one bundle.js
+- This is exactly how the webpack plays its role.
+- Webpack takes bigger pile of Javascripts code and merge them together into one bundle.js
 
 # S2L6
 - Start work on the demo app. npm init generates a new project.
