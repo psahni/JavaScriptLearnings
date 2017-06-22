@@ -1,0 +1,80 @@
+* Generators
+- We can enter and exit from the function multiple times
+
+function* numbers() {
+  yield;
+}
+numbers()
+
+const gen =  numbers();
+gen.next(); { done: false }
+gen.next(); { done: true }
+
+
+function* shopping() {
+  const step =  yield 'cash';
+
+  return step;
+}
+
+gen = shopping(); // nothing happens till here
+
+gen.next();
+//{ value: 'cash', done: false}
+
+gen.next('groceries');
+//{ value: 'groceries', done: true}
+
+
+#----------------------------------------------------------
+
+function *shopping(){
+  var cash = yield 'cash';
+  var laundry = yield 'laundry';
+
+  return laundry;
+}
+var gen = shopping();
+
+gen.next(); //{value: "cash", done: false}
+gen.next(); //{value: "laundry", done: false}
+gen.next('ss'); //{value: "ss", done: true}
+
+#----------------------------------------------------------
+
+
+function *shopping(){
+  var cash = yield 'cash';
+  var laundry = yield 'laundry';
+
+  return [cash, laundry];
+}
+var gen = shopping();
+
+gen.next(); //{value: "cash", done: false}
+gen.next('i1'); //{value: "laundry", done: false}
+gen.next('i2'); //{value: "ss", done: true}
+
+#----------------------------------------------------------
+
+- I want to iterate over only few properties of the object.
+
+const engineeringTeam = {
+  manager: 'Jill',
+  lead: 'Jack',
+  tester: 'phill',
+  designer: 'alen'
+}
+
+function *TeamIterator(team){
+  yield team.manager;
+  yield team.lead;
+}
+
+const people = [];
+
+for( let name of TeamIterator(engineeringTeam)) {
+  people.push(name);
+}
+
+people // ['Jill', 'Jack']

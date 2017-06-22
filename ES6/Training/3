@@ -1,0 +1,8 @@
+* 44
+classes
+
+function Car(options) {
+  this.title =  options.title;
+}
+
+const car = new Car({ title: 'Focus'});

@@ -1,0 +1,69 @@
+* ECMA IS A STANDARD.
+* Javascript is the implementation.
+
+* ES6 Code -> Babel(Transpilor) -> ES5 code
+
+* 3. Array Helper Methods
+
+foreach, map, filter, find, every, some, reduce, reject
+
+* 4. forEach
+
+array.forEach(function(element) {
+  console.log(element);
+})
+
+* 5. forEach continue..
+
+var numbers = [1,2,3,4];
+
+var sum = 0;
+
+function adder(number) {
+  sum += number;
+}
+
+numbers.forEach(adder);
+
+* 6. Why use forEach ?
+
+emails.forEach(function(email) {
+  deleteEmail(email);
+})
+
+* 7
+
+const double = numbers.map(function(number){
+  return number*2;
+});
+
+* 8
+
+- fetch properties:
+
+cars.map(function(car){
+  return car.price
+});
+
+
+* 9
+
+- example of pluck
+
+pluck(arry_of_objects, property)
+pluck(paints, 'color');
+
+* 11
+
+- use of filter
+
+- reject is opposite of filter
+
+array.reject(function(arr) => {
+  return arr < 10;
+});
+
+// Reject those which are less 10 or only return those which are greater than 10.
+
+
+* use of find

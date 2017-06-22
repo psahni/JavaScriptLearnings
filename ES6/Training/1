@@ -1,0 +1,69 @@
+let number3 = 21;
+if(true){
+  number3 = 23;
+}
+console.log(number3);
+
+* 23
+#-------------------------------------------------------------------
+
+let number1 = 21;
+if(true){
+  let number1 = 23;
+}
+console.log(number1);
+
+* 21
+
+#-------------------------------------------------------------------
+
+var number = 21;
+if(true){
+  var number = 23;
+}
+console.log(number);
+
+* 23
+#-------------------------------------------------------------------
+
+var number5 = 21;
+if(true){
+  number5 = 23;
+}
+console.log(number5);
+
+* 23
+
+#-------------------------------------------------------------------
+
+Hoisting does not work the same way.
+
+Earlier
+
+age = 20;
+console.log(age);
+
+var age;
+
+It will work.
+
+But
+age = 20;
+console.log(age);
+
+let age;
+
+// It will give is reference error.
+
+#-------------------------------------------------------------------
+
+
+function sayHello() {
+  name = "Prashant";
+}
+
+let name;
+sayHello();
+console.log(name); // It will work, becz let is declared before it used;
+
+#-------------------------------------------------------------------
