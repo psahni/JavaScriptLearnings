@@ -1,3 +1,6 @@
+----------------------
+VIDEOS TO BE SEEN - 52
+----------------------
 * 'class' based components have life cycle methods. When to do what.
 * componentWillMount() - when component is about to render.
 
@@ -49,3 +52,64 @@ class AlbumList {
 
 AlbumDetail.js
 
+const AlbumDetail = (props) => {
+  return (
+    <Card>
+      <CardSection>
+        <Text>{props.album.title}</Text>
+      </CardSection>
+    </Card>
+  );
+};
+
+const Card = (props) => {
+  return (
+    <View style={styles.containerStyle}>
+      {props.children}
+    </View>
+  )
+}
+
+
+const CardSection = (props) => {
+  return (
+    <View style={styles.containerStyle}>
+      {props.children}
+    </View>
+  )
+}
+
+
+----
+
+
+* To make view scrollable (47)
+
+<ScrollView>
+..
+</ScrollView>>
+
+const App = () => {
+  <View style={{flex: 1}}>
+    <Header headerText={"Albums"}>
+    <AlbumList />
+  </View>
+}
+
+
+
+--------
+
+* Button Component
+
+
+<TouchableOpacity onPress={() => console.log("Hey!")}>
+  <Text>Click Me!<Text>
+<TouchableOpacity>
+
+flex: 1
+alignSelf: 'center'
+color: '#007aff'
+
+<Button>
+</Button>

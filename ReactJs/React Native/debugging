@@ -1,0 +1,4 @@
+- Press ctrl+D to open the react native debug menu
+- Click Debug js remotely
+- It automatically opens up the browser in localhost:8081/debugger-ui
+-
