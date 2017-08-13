@@ -1,0 +1,51 @@
+# PROMISE EXAMPLES
+
+# 1
+
+var p1 = new Promise((resolve, reject) => {
+  if (true)
+    throw new Error("rejected!"); // same as rejection
+  else
+    resolve(4);
+});
+
+p1.then((val) => val + 2)
+ .then((val) => console.log("got", val))
+ .catch((err) => console.log("error: ", err.message));
+
+var p2 = new Promise((resolve, reject) => {
+  resolve(4);
+});
+
+p2.then((val) => val + 2)
+ .then((val) => { throw new Error("step 2 failed!") })
+ .then((val) => console.log("got", val))
+ .catch((err) => console.log("error: ", err.message));
+
+
+# 2
+
+var fetchJSON = function(url) {
+  return new Promise((resolve, reject) => {
+    $.getJSON(url)
+      .done((json) => resolve(json))
+      .fail((xhr, status, err) => reject(status + err.message));
+  });
+}
+
+# 3
+
+var itemUrls = {
+  'http://www.api.com/items/1234',
+  'http://www.api.com/items/4567'
+},
+
+itemPromises = itemUrls.map(fetchJSON);
+
+Promise.all(itemPromises)
+  .then(function(results) {
+     results.forEach(function(item) {
+  });
+}).catch(function(err) {
+    console.log("Failed:", err);
+});

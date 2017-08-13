@@ -38,7 +38,7 @@ var gen = shopping();
 
 gen.next(); //{value: "cash", done: false}
 gen.next(); //{value: "laundry", done: false}
-gen.next('ss'); //{value: "ss", done: true}
+gen.next('money'); //{value: "money", done: true}
 
 #----------------------------------------------------------
 
@@ -53,7 +53,7 @@ var gen = shopping();
 
 gen.next(); //{value: "cash", done: false}
 gen.next('i1'); //{value: "laundry", done: false}
-gen.next('i2'); //{value: "ss", done: true}
+gen.next('i2'); //{value: ['i1', 'i2'], done: true}
 
 #----------------------------------------------------------
 
@@ -78,3 +78,32 @@ for( let name of TeamIterator(engineeringTeam)) {
 }
 
 people // ['Jill', 'Jack']
+
+
+* GENERATOR DELEGATION
+
+const testingTeam = {
+  lead: 'Anna',
+  tester: 'Jig'
+}
+
+const engineeringTeam = {
+  testingTeam,
+  manager: 'Jill',
+  lead: 'Jack',
+  tester: 'phill',
+  designer: 'alen'
+}
+
+function* TestingTeamIterator(testingTeam) {
+  yield team.lead;
+  yield team.tester;
+}
+
+function *TeamIterator(team){
+  yield team.manager;
+  yield team.lead;
+  const testingTeamGenerator = TestingTeamIterator(team.testingTeam);
+  yield* testingTeamGenerator; // Another generator that needs to be tracked. We hae multiple generators.
+}
+
