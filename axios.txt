@@ -1,0 +1,32 @@
+    // axios.get('https://jsonplaceholder.typicode.com/posts/1').then(function(){
+    //   console.log("request completed");
+    // });
+    const url = "https://172.16.69.226:8501/lr-case-api/cases/number/12/";
+    const headers = {
+      "Authorization":"Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiIzZjIyODNhYi0xZjczLTQ4ZDgtOWVhYi00OTRkN2M4ZmM1ZTciLCJjaWQiOiI3MzhFMTlEMC02ODU3LTRFNjMtOTA2My1DMkYzMEE5NTdFMzciLCJpc3MiOiJsci1hdXRoIiwicmlkIjoic2VydmljZUFjY291bnQiLCJwaWQiOjMsImV4cCI6MzA3ODk4MDEzNiwiaWF0IjoxNTAxMTMyNTM2fQ.D2NShg8D8r1hihEw5Po2VH4LhRYlWFS4CqX2fyuaD9Bonv3gwASDyczL7sTOlzhoLLL_0V1PMNoQhs25fe09QSRpEuXy-aFtTKtI2suoZlmQXh38TUO4o3yM8oq_NBo_ndFzAZMzfkKEp0ST7W4u_bKKdrtibHqaMhy_XeEK3VbHQcOJi6GHya7xFlQfXy3T518ZAuyNwHYy3cqxPdkFImbnhoNs8ATLVS6gsWPxICn5sNASxlNzZJT2UYMTu_kQF9r6BOum_mNDXk2t8NpKtmGAT7kFAkN4nhYGzQo7pgaHAasleLpLn_IyEjjGzSIaX3PWKT48-l6TYM97hAZ8Hg",
+      "Content-Type":"application/json"
+    }
+    axios.get(url, { headers: headers, requestUnauthorized: false }).then(function() {
+      console.log("helll");
+    }).catch(function(error) {
+      console.log("error = ", error);
+    });
+    // fetch('https://172.16.69.226:8501/lr-case-api/cases/number/12/',{
+    //   method: "GET",
+    //   headers: headers,
+    //   rejectUnauthorized: true
+    // }).then(function(){
+    //   console.log("reject")
+    // })
+    // .then((response) => response.json())
+    // .then((resp) => {
+    //   Alert.alert(
+    //     'Alert Title',
+    //     "this is response" + resp.title,
+    //     [
+    //       {text: 'Ask me later', onPress: () => console.log('Ask me later pressed')},
+    //       {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+    //       {text: 'OK', onPress: () => console.log('OK Pressed')},
+    //     ]
+    //   )
+    // })

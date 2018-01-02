@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "sourceMap": true
+  },
+  "files": [
+    "example.ts",
+    "example_2.ts"
+  ]
+}
