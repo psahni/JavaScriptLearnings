@@ -1,0 +1,9 @@
+Why React ?
+Angular Vs React
+Life cycle in react
+
+
+super(props)
+what is state a component ?
+react form - handling form attributes change 
+https://reactjs.org/docs/forms.html#handling-multiple-inputs

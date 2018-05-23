@@ -54,3 +54,9 @@
 * Components not templates.
 
 * Reload the parts that has been changed.
+
+
+VIRTUAL DOM
+https://www.codecademy.com/articles/react-virtual-dom
+
+https://hackernoon.com/virtual-dom-in-reactjs-43a3fdb1d130 [Later]
