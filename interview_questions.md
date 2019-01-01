@@ -1,2 +1,3 @@
 - Directive
-- 
+- ng model change
+
