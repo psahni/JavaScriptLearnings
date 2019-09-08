@@ -1,0 +1,13 @@
+function Constructor() {}
+o = new Constructor();
+// is equivalent to:
+o = Object.create(Constructor.prototype);
+
+o = {};
+// is equivalent to:
+o = Object.create(Object.prototype);
+
+
+Object.create and new Constructor() diff
+
+https://stackoverflow.com/questions/13040684/javascript-inheritance-object-create-vs-new

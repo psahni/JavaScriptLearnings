@@ -1,0 +1,93 @@
+Objects
+
+var person1 = {
+	name: "Nicholas"
+};
+
+var person2 = new Object();
+
+
+if (person1.age) {
+	//..
+}
+
+The if condition evaluates to true if the value is truthy (an object, a nonempty string, a nonzero number,
+or true) and evaluates to false if the value is falsy (null, undefined, 0, false, NaN, or an empty
+string).
+
+var person1 = {
+	name: "Nicholas",
+	sayName: function() {
+		console.log(this.name);
+	}
+};
+console.log("sayName" in person1); // true
+console.log(person1.hasOwnProperty("name")); // true
+
+console.log("toString" in person1); // true
+console.log(person1.hasOwnProperty("toString")); // false
+
+
+DELETE property
+
+delete person1.name;
+
+console.log("name" in person1); // false
+
+Enumeration
+
+Object.keys(object);
+
+for (property in object) {
+	console.log("Name: " + property);
+	console.log("Value: " + object[property]);
+}
+
+
+// SETTER AND GETTER
+var person1 = {
+	_name: "Nicholas",
+	get name() {
+		console.log("Reading name");
+		return this._name;
+	},
+	set name(value) {
+		console.log("Setting name to %s", value);
+		this._name = value;
+	}
+};
+
+// FREEZING OBJECT
+Object.freeze(obj);
+(Object.isFrozen(obj)); //true
+
+
+CONSTRUCTOR
+A constructor is simply a function that is used with new to create an object
+
+function Person() { // intentionally empty }
+
+var person1 = new Person(); var person2 = new Person();
+If you want to create multiple similar objects, you can create your own constructors and therefore your own reference types.
+
+console.log(person1 instanceof Person); // true
+console.log(person1.constructor === Person); // true
+
+function Person(name) { this.name = name; this.sayName = function() { console.log(this.name); }; }
+
+If you create 100 objects, then there will be 100 copies of the same function.
+
+The shared nature of prototypes makes them ideal for defining methods once for all objects of a given type.
+Because methods tend to do the same thing for all instances, there’s no reason each instance needs its own set of methods.
+
+CREATING NEW OBJECTS
+
+"When you create a new object using new, the constructor’s prototype property
+is assigned to the [[Prototype]] property of that new object. "
+
+The constructor property is actually defined on the prototype because it is shared among object
+instances.
+
+var object = {}; var prototype = Object.getPrototypeOf(object);
+console.log(prototype === Object.prototype); // true
+

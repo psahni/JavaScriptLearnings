@@ -1,0 +1,69 @@
+* Locating Conflicted Files
+You can also use either the git status command or the "git ls-files -u" command to
+show the set of files that remain unmerged in your working tree
+
+* How a file looks like on a specfic branch
+
+-->      git show dev:<filename>
+-->      git show <commit_id>:<filename>
+
+* How to bring a file from a specfic commit
+   --> git checkout <commit_id> <filename>
+
+This command will bring the file from the mentioned commit to the staging area
+
+* Set up an alias
+
+  git config --global alias.show-graph 'log --graph --abbrev-commit --pretty=oneline'
+  git show-graph
+
+#------------------------------------------------------------------------------------------------------
+
+* Rename a git branch
+
+	git branch -m new-name
+	git branch -m old-name new-name
+	git push origin :old-name new-name . Delete the old-name remote branch and push the new-name 
+	git push origin -u new-name . Reset the upstream branch 
+
+#------------------------------------------------------------------------------------------------------
+
+* Conflict on local machine, i dont my code i need respository code?
+
+
+* Conflict on local machine, i dont need respository code, i need my code?
+
+
+* Modify the last commit message
+
+
+
+* Squash commits
+
+
+* Track remote branch as it is
+git checkout --track -b production origin/production
+
+
+* cherry-pick
+
+
+* Delete the last commit
+
+Go the prev commit
+git reset --hard HEAD~1
+
+Force push and get rid of it.
+git push origin HEAD --force
+
+*
+ MOVE TO PREVIOUS HEAD STATE
+git reset --soft HEAD@{1}
+
+
+http://stackoverflow.com/questions/1072261/push-and-pull-branches-in-git
+http://stackoverflow.com/questions/1914579/set-up-git-to-pull-and-push-all-branches
+
+
+* Undo last commit
+http://stackoverflow.com/questions/7699479/in-coffeescript-how-can-i-use-a-variable-as-a-key-in-a-hash

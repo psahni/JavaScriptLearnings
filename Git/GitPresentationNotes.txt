@@ -1,0 +1,52 @@
+* What is git
+  Git is an open source, distributed version control system designed for speed and efficiency
+
+  A tool that manages and tracks different versions of software or other content is referred
+  to generically as a version control system (VCS),
+
+    
+
+		Git advantages:-
+		- Facilitate distributed development
+		- Scale to handle thousands of developers
+		- Perform quickly and efficiently
+		- Maintain integrity and trust
+		- Immutability
+		
+  * ON DISTRIBUTED PHILOSHPHY
+
+
+  There are generally two models in version control systems: centralized and
+  distributed.Tools such as Subversion typically require a network connection
+  to a centralized server.You make a change to your project and then commit
+  that change, which is sent to the centralized server to track. Other developers
+  can then immediately access your changes.
+
+  Distributed version control systems, such as Git, break the process of committing
+  code and sharing it with others into two parts.You can commit your
+  code to your local private repository without having to talk to a centralized
+  server, removing the need to be connected to a network to make a change.
+
+  * Facilitate Distributed Development
+
+  There are many facets to “distributed development,” and Linus wanted a new VCS
+  that would cover most of them. It had to allow parallel as well as independent and
+  simultaneous development in private repositories without the need for constant
+  synchronization with a central repository, which could form a development bottleneck.
+  It had to allow multiple developers in multiple locations even if some of them were offline temporarily.
+  
+  - Developer can work independently and synchronize their code with the central repositoty, 
+  share their code with other devs whenever they want to.
+  - Thousands of developers at multiple locations can work on their own machine without even being connected to network.
+  - Network latency does not hinder daily development
+  
+  
+#---------------------------------------------------------------------------------------
+  
+  WHY ?
+  - You want to record and manage the changes. You want to see the diff between the two revisions and switch to the change if some thing goes
+  wrong in your current revision.
+  - You want to keep the track/see of the history of the changes/modifications. What changes has been made and who made changes at what time. Specially when 
+  you are working in a Team env.
+  - You want to have backup of each of your revision.
+  

@@ -1,0 +1,111 @@
+.git folder
+- .git folder contain all revision history
+
+Git repository maintains lot of information for handling revisions and history of the a project.
+
+Within a repository, Git maintains two primary data structures, the object store and
+the index. All of this repository data is stored at the root of your working directory in
+a hidden subdirectory named .git
+
+
+4 object types
+  Blobs, trees, commits, tags
+  
+Tree
+	A tree object represents one level of directory information.
+	It can also recursively reference other (sub)tree objects and thus build a complete hierarchy of files and subdirectories.
+
+Commit
+	A commit object holds metadata for each change introduced into the repository,including the author, committer, commit date,
+	and log message.
+	
+	A commit object holds metadata for each change introduced into the repository,
+	including the author, committer, commit date, and log message
+	
+	The initial commit, or root commit, has no parent
+
+
+Index
+  Represent the state of the project at any point of time. It keeps the changes done in the directory until you commit them.
+  
+  
+SHA-1
+  Each object in the object store has a unique name produced by applying SHA1 to the contents of the object, 
+  yielding an SHA1 hash value .
+  Any tiny change to a file causes the SHA1 hash to change, causing the new version of the file to be indexed separately
+
+
+Git Stores every version of the file:-
+  
+* Git’s internal database efficiently stores every version of every file—not their
+differences—as files go from one revision to the next. Because Git uses the hash of a
+file’s complete content as the name for that file, it must operate on each complete copy
+of the file. It cannot base its work or its object store entries on only part of the file’s
+content, nor on the differences between two revisions of that file.
+
+Object types detail
+
+Tree objects point to blobs, and possibly to other trees as well. Any given tree object
+might be pointed at by many different commit objects. Each tree is represented by a
+triangle.
+
+git cat-file -p HEAD
+git cat-file -p <commit_id>
+
+origin  - The remote repository (the one u clone from)
+origin/master - the master branch of the 'origin' repository
+origin/feature - the feature branch of the 'origin' repository
+
+
+Branching
+
+An individual branch can represent the work of an individual contributor. Another
+branch—the “integration” branch—can be used specifically to unify efforts.
+
+Create:
+
+By default the branch will be created from  HEAD
+
+specifically - git branch branch [starting-commit]
+
+
+For instance, to make a bug fix on the version 2.3 release of your software, you might specify a branch named rel-2.3 as the starting commit:
+$ git branch prs/pr-1138 rel-2.3
+
+View:-
+git show-branch
+git branch -a
+
+Commands to learn
+$ git log --graph --pretty=oneline --abbrev-commit
+$ git ls-files -s To see how the index entries are stored, you can use the git ls-files
+$ git ls-files -u To see unmerged files
+$ git reset --hard ORIG_HEAD If you want to abort or discard the merge after it has finished
+$ git merge-base feature master # This command returns the commit ID of the original base, which you can then pass to git rebase
+
+Repository
+
+* Cloning a repository is just the first step in sharing code. You must also relate one
+repository to another to establish paths for data exchange. Git establishes these repository
+connections through remotes.
+
+* A remote is a reference, or handle, to another repository. You use a remote as a shorthand
+name for an otherwise lengthy and complicated Git URL.
+
+Questions:
+  Branch refers to the commit ?           Yes
+  Fast forward and no fast forward        
+
+ - Graph information 
+ git log --graph --simplify-by-decoration --pretty=format:'%d' --all
+ git log --oneline --decorate
+ 
+ 
+ 
+ 
+#----------------------------------------------------------------------
+Rename
+git branch -m myoldbranchName myNewBranchName
+
+Delete
+git branch -d branchName

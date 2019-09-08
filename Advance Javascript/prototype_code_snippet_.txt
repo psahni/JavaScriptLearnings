@@ -1,0 +1,52 @@
+
+# PROTOTYPE AND CONSTTRUCTOR EXAMPLE:
+
+function Person(first_name, last_name) {
+  this.first_name = first_name;
+  this.last_name = last_name;
+  this.full_name = function() {
+    return first_name + " " + last_name;
+  }
+}
+
+Person.prototype.getName = function () {
+  return this.first_name + " " + this.last_name;
+}
+
+
+function Manager(first_name, last_name) {
+  Person.call(this, first_name, last_name);
+}
+
+Manager.prototype = Object.create(Person.prototype);
+
+var manager = new Manager("Prashant", "Sahni");
+
+console.log(manager.getName());
+
+#----------------------------------------------------------------
+
+function Person(name) {
+  this.name = name;
+}
+
+Person.prototype.sayName = function() {
+  console.log(this.name);
+};
+
+var person1 = new Person("Nicholas");
+var person2 = new Person("Greg");
+
+console.log(person1.name); // "Nicholas" console.log(person2.name); // "Greg"
+person1.sayName(); // outputs "Nicholas" person2.sayName(); // outputs "Greg"
+
+
+#--------------------------------------------------------------------------
+
+TO AVOID CONTRUCTOR OVERIDING
+
+Person.prototype = {
+	constructor: Person,
+	sayName: function() { console.log(this.name); },
+	toString: function() { return "[Person " + this.name + "]"; }
+}

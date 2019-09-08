@@ -1,0 +1,62 @@
+# AJAX
+
+## What it is ?
+
+### MDN Definition:-
+
+AJAX (Asynchronous JavaScript And XML) is a programming practice of combining HTML, CSS, JavaScript, the DOM, and the XMLHttpRequest
+object to build more complex webpages.What AJAX allows you to do is just update parts of a webpage instead of having to reload the entire
+page.
+
+
+### W3 schools
+
+* Update a web page without reloading the page
+* Request data from a server - after the page has loaded
+* Receive data from a server - after the page has loaded
+* Send data to a server - in the background
+
+
+
+## How to do ?
+
+### XHR (XMLHttpRequest)
+
+XMLHttpRequest (XHR) is a JavaScript API to create AJAX requests.
+
+Use XMLHttpRequest (XHR) objects to interact with servers. You can retrieve data from a URL without having to do a full page refresh.
+This enables a Web page to update just part of a page without disrupting what the user is doing.
+
+* Create xhr object
+const xhr = new XMLHttpRequest();
+
+* Prepare the request - open
+xhr.open('get', 'http://example.com/users', true);
+
+* Send reqeust. Request is dispatched to the server from here.
+xhr.send(null)
+
+* 'readyState' property to know the status of the ajax request.
+
+0	UNSENT	open() not called yet.
+
+1	OPENED	open() has been called.
+
+2	SENT	send() has been called, but no response has been received yet.
+
+3	LOADING	Downloading; responseText holds partial data.
+
+4	DONE	The operation is complete. All response data is available
+
+*/
+
+xhr.onreadystatechange = function() {
+	if ( xhr.readyState == 4 ) {
+		console.log(xhr.responseText);
+	} else {
+		console.log('request is not successfull ', xhr.status);
+	}
+}
+
+* HEADERS
+xhr.setRequestHeader('Accept', 'application/json');

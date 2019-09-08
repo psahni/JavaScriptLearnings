@@ -1,0 +1,21 @@
+Javacript Session:-
+
+https://github.com/psahni/Training/tree/master/formValidation
+
+1. Install node js
+2. Run the repo
+3. display index.html with mini html and css
+4. Explain Ajax, xhr
+5. Code using xhr
+6. Explaination
+7. Fetch 
+
+
+JSON communication
+1. What is json ?
+2. Data interchange between client and the server
+3. Example of the server returning json 
+
+
+Wiki
+https://en.wikipedia.org/wiki/Ajax_(programming)

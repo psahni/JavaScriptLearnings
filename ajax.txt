@@ -1,0 +1,106 @@
+MDN:-
+
+AJAX (Asynchronous JavaScript And XML) is a programming practice of combining HTML, CSS, JavaScript, the DOM, and the XMLHttpRequest
+object to build more complex webpages.What AJAX allows you to do is just update parts of a webpage instead of having to reload the entire page. 
+
+AJAX also lets you work asynchronously, meaning your code continues to run while that part of your webpage is trying to reload (compared to synchronously which will block your code from running until that part of your webpage is done reloading).
+
+W3 schhols - Update a web page without reloading the page
+
+Update a web page without reloading the page
+Request data from a server - after the page has loaded
+Receive data from a server - after the page has loaded
+Send data to a server - in the background
+
+To update part of the page dynamically
+
+
+* When ajax request is sent async javascript continues its execution 
+
+HEADERS
+Accept: is what the browser is able to digest, for example, all the languages someone can understand.
+There can be multiple accept headers.
+Content-Type: is what format the actual data is in, for example what language someone is speaking. Since computers can't (well, nowthey can) recognize other types like people can say "oh, he's German!" or "she's speaking Chinese!"
+
+For JSON:
+Content-Type: application/json
+
+
+MORE TO DO
+post request example
+
+Refs
+
+https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/readyState
+
+https://developer.mozilla.org/en-US/docs/Web/Guide/AJAX/Getting_Started
+
+https://stackoverflow.com/questions/9713058/send-post-data-using-xmlhttprequest
+
+FETCH
+
+https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
+
+
+Regular expression
+1. Simple email expression
+Email:- [a-z0-9]+\.[a-z0-9]+@[a-z]+\.[a-z]{0,3}$
+
+2. Match all digits
+str.match(/[\d]+/g)
+
+3. Match content between html tags
+
+
+Misc
+
+Match all 4 chars
+\s([a-z]{4})\s
+
+ 
+Match	wazzzzzup	Success
+Match	wazzzup	Success
+Skip	wazup
+
+-----------------------------------------------------------------------
+
+[\d]+\s(files?)\sfound\?
+
+Task	Text	 
+Match	1 file found?	Success
+Match	2 files found?	Success
+Match	24 files found?	Success
+Skip	No files found.
+
+-----------------------------------------------------------------------
+
+Match	Mission: successful	Success
+Skip	Last Mission: unsuccessful	To be completed
+Skip	Next Mission: successful upon capture of target
+
+The expression 'Mission: successful' will match anywhere in the text, so we need to use the starting and ending anchors in an
+expression ^Mission: successful$ to only match the full string that starts with 'Mission' and ends with 'successful'.
+
+-----------------------------------------------------------------------
+
+Match filenames ^(file_[\w]+)\.pdf$
+Grouping example 	file_record_transcript.pdf 	file_07241999.pdf 	testfile_fake.pdf.tmp
+
+Jan 1987 	May 1969 Aug 2011
+
+-----------------------------------------------------------------------
+<(\w+)\b.*?>.*?<\/[\w]+> 			- method 1
+<\w+\s([^>]+)>(.*)<\/\w+>			- method 2
+Match html tags
+https://regex101.com/
+
+
+LOOK AHEAD OPERATOR
+https://stackoverflow.com/questions/2973436/regex-lookahead-lookbehind-and-atomic-groups
+http://www.rexegg.com/regex-lookarounds.html
+https://stackoverflow.com/questions/2301285/what-do-lazy-and-greedy-mean-in-the-context-of-regular-expressions
+https://stackoverflow.com/questions/2973436/regex-lookahead-lookbehind-and-atomic-groups
+https://docs.microsoft.com/en-us/dotnet/standard/base-types/regular-expression-language-quick-reference
+
+Example of password
+^(?=.{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).*$

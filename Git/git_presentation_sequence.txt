@@ -1,0 +1,26 @@
+* Branching
+
+- Seprate line of development
+
+- git branch <branch_name>
+
+- git checkout <branch_name>
+
+- git merge branch_name
+
+- git rebase branch_name
+
+- squash commits
+
+- git rebase HEAD~2
+
+- git commit --ammend
+
+To show file content at particular branch
+- git show <branch_name>:<file_name>
+
+Checking out branch when you changes in file in both the branches
+
+- git checkout <branch_name>
+
+

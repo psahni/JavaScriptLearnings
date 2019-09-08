@@ -1,0 +1,22 @@
+# Regular Expressions
+
+- Match Character
+
+- Digits
+
+- Match Word
+
+- Dot
+
+- Matching specific characters
+
+- Skipping characters
+
+- Optional Character
+
+- Grouping
+
+- Conditional texts
+
+I love cats, 	I love dogs
+

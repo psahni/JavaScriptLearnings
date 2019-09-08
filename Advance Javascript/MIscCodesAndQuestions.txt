@@ -1,0 +1,115 @@
+var a = 1;
+function foo(a) {
+  a = 2;
+}
+
+foo(a);
+console.log(a);
+
+// Pass by value;
+
+// Each function creates it own execution context.
+function b() {
+ var myVar;
+ console.log(myVar);
+}
+
+function a() {
+ var myVar = 2;
+ console.log(myVar);
+ b();
+}
+
+var myVar = 1;
+console.log(myVar);
+a();
+
+//
+--------------------------
+Lexical scope chain - 1
+--------------------------
+
+function foo() {
+  console.log(myVar);
+}
+
+function goo() {
+  var myVar = 1;
+  foo();
+}
+
+//  ReferenceError: myVar is not defined
+----------------------------------------------------
+
+function f(){
+  console.log(value);
+}
+
+function d(){
+ var value = 20;
+ f()
+}
+
+d();
+var value = 2;
+
+----------------------------------------------------
+
+function ss1(){
+ console.log("name is ", name);
+}
+
+ss1();
+var name = "Prashant"; // mil jayega
+
+----------------------------------------------------
+
+CLOSURE EXAMPLE:
+
+#1
+
+var foo = [];
+for (var i=0; i < 10; i++) {
+  foo[i] = function() { return i };
+}
+
+var foo = [];
+
+for (var i=0; i < 10; i++) {
+  (function(y){
+    foo[y] = function() { return y };
+  })(i);
+  console.log(i);
+}
+
+#2
+
+(function(x) {
+  return (function(y) {
+    console.log(x); //1 == Search will be in the outer scope. The value will be 1.
+  })(2)
+})(1);
+
+----------------------------------------------------
+
+VARIBLE HOISTING
+
+var value1 = 2;
+(function(){
+ console.log(value1); // undefined;
+ var value1;
+})();
+
+----------------------------------------------------
+
+BIND EXAMPLE
+
+var person = {
+  name: "James Smith",
+  hello: function(thing) {
+    console.log(this.name + " says hello " + thing);
+  }
+}
+
+var helloFunc = person.hello.bind(person);
+helloFunc("world");  // output: "James Smith says hello world"
