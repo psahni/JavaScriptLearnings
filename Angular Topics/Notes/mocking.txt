@@ -1,0 +1,38 @@
+Mocks work by implementing the proxy pattern. When you create a mock object, it creates a proxy object that takes the place of the real object. We can then define what methods are called and their returned values from within our test method. Mocks can then be utilized to retrieve run-time statistics on the spied function such as:
+
+How many times the spied function was called.
+What was the value that the function returned to the caller.
+How many parameters the function was called with.
+
+In Jasmine, mocks are referred to as spies. There are two ways to create a spy in Jasmine: spyOn() can only be used when the method already exists on the object, whereas jasmine.createSpy() will return a brand new function:
+
+//spyOn(object, methodName) where object.method() is a function
+spyOn(obj, 'myMethod')
+ 
+//jasmine.createSpy(stubName);
+var myMockMethod = jasmine.createSpy('My Method');
+
+
+testPerson.getName = jasmine.createSpy("getName() spy");
+
+To substitute the original method.
+
+
+// defining a spy on an existing property: testPerson.getName() calls an anonymous function
+testPerson.getName = jasmine.createSpy("getName() spy").andCallFake(function() {
+    console.log("Hello from getName()");
+    return "Bobby";
+});
+
+
+https://www.htmlgoodies.com/html5/javascript/spy-on-javascript-methods-using-the-jasmine-testing-framework.html
+
+
+About Basics
+
+ A Suite is defined by calling the describe() function. It takes two parameters: the name of the Suite, and the function which
+ contains the calls to the expectation methods called Specs. 
+ 
+ These are defined using the it() method. Like describe(), it() also accepts a name and function parameter. The it() function 
+ parameter may contain variables and one or more calls to the expect() method. Used in conjunction with a Matcher function, these 
+ carry out the task of comparing the actual and expected values.

@@ -1,0 +1,25 @@
+*---------------------------------------------------------------*
+	Setting Node Js And angular
+*---------------------------------------------------------------*
+
+
+1) Install node manager package (npm)
+	This will install node js and give node command on the terminal.
+	https://nodejs.org/en/download/
+
+Check "which node" and "node -v"
+
+
+2) To install any package. Do
+	$ npm install packageName
+
+
+3) Install Bower - Manage libraries used by angular
+
+ npm install bower
+
+
+
+4) Install Angular
+
+	bower install angular

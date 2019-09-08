@@ -1,0 +1,33 @@
+Angular 2 shows a substantial change in the structure as compared to version 1.0. The architecture of AngularJS is based on MVC 
+whereas the architecture of Angular 2 is based on service/controller. 
+
+There is very less possibility to upgrade the Angular 1 to 2, mainly developers have to rewrite the entire application code.
+
+
+Upgrade of the version from 2.0 to 4.0 has reduced it’s bundled file size by 60%. The code generated is reduced and has accelerated the 
+application development. Here the developed code can be used for prod mode and debug.
+
+
+https://medium.com/@angularminds/comparison-between-angular-1-vs-angular-2-vs-angular-4-62fe79c379e3
+
+
+The controller concept which was present in Angular v1.0 is eliminated in Angular v2.0. Angular v2.0 has changed to component based UI. 
+This helps a developer to divide the applications in terms of components with desired features and enable to call required UI. These 
+have helped to improve the flexibility and reusability as compared to Angular v1.0
+
+
+Angular 6
+
+Angular Elements will give us the ability to use our Angular components in other environments (like a simple jQuery app or VueJS app). 
+It will take an Angular component and wrap it inside a Custom Element (aka DOM element), allowing us to use our sweet sweet Angular 
+components in other projects that don’t have the full Angular ecosystem!
+
+This will be the third rendering engine Angular has seen. The second was between version 2 and 4, called the View Engine. After they 
+replaced it the first time, they saw increases in speed and decreases in application size, while having almost no reports of 
+incompatibilities. They are hoping to see the same kind of results this time as well.
+
+
+
+https://dzone.com/articles/angular-2-vs-angular-4-features-performance
+
+https://www.telerik.com/blogs/whats-new-in-angular-6

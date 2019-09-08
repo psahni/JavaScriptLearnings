@@ -1,0 +1,333 @@
+A good practice when writing Angular code is to try to isolate the data structures we are using from
+the component code. To do this, let’s create a data structure that represents a single article. Let’s add
+a new file article.model.ts to define an Article class that we can use.
+
+
+#
+
+Similarly, in the ArticleComponent we return false; as a way to say “don’t propagate the
+event” - this is a view-specific piece of logic and we shouldn’t allow the Article model’s
+voteUp() function to have to knowledge about that sort of view-specific API. That is, the
+Article model should allow voting apart from the specific view
+
+#
+The point of making components is not only encapsulation, but also reusability.
+
+
+#
+ng build --target=production --base-href /
+
+Those characters are a hash of the content (and may not match on your computer). If you look
+at each file, you can see that we have some icons, the index.html, a main.js, a polyfills.js, a
+vendor.js, and some styles.css. Now all the need to do is upload these to our server.
+
+#
+
+Each component is composed of three parts:
+• Component Decorator
+• A View
+• A Controller
+
+#
+
+The [squareBrackets] pass inputs and the (parentheses) handle outputs.
+
+<my-component [shortName]="myName" [oldAge]="myAge"></my-component>
+
+@Component({
+	selector: 'my-component'
+})
+
+class MyComponent {
+	@Input('shortName') name: string;
+	@Input('oldAge') age: number;
+}
+
+
+An EventEmitter is an object that helps you implement the Observer Pattern40. That is,
+it’s an object that will:
+1. maintain a list of subscribers and
+2. publish events to them.
+That’s it.
+
+#
+
+let ee = new EventEmitter();
+ee.subscribe((name: string) => console.log(`Hello ${name}`));
+ee.emit("Nate");   // -> "Hello Nate
+
+#
+
+@Output() putRingOnIt: EventEmitter<string>;
+
+liked(): void {
+	this.putRingOnIt.emit("oh oh oh");
+}
+
+#
+
+private currentProduct: Product;
+
+Local component state should be kept private
+
+#
+
+[class.selected]="isSelected(myProduct)">
+
+#
+
+# 
+
+"the let thing of things syntax says, “iterate over things and create a copy of this element for each item, 
+and assign each item to the variable thing”."
+
+
+- Use of correct variable names 
+
+*ngFor="let myProduct of productList"
+
+- myProduct is a local template variable
+#
+
+Using host is nice because it means we can configure our host element from within the
+component. This is great because otherwise we’d require the host element to specify the
+CSS tag and that is bad because we would then make assigning a CSS class part of the
+requirement to using the Component.
+
+#
+
+When you create new components in Angular, in order to use them they must be accessible
+from the current module. That is, if we want to use the ProductsListComponent component with
+the products-list selector in the AppComponent template, then we need to make sure that the
+AppComponent’s module either:
+
+1. is in the same module as the ProductsListComponent component or
+2. The AppComponent’s module imports the module that contains ProductsListComponent
+
+#
+
+
+Remember every component you write must be declared in one NgModule before it can be
+used in a template.
+
+#
+
+ng serve
+
+• ng serve looks at .angular-cli.json which specifies main.ts as our entry point (and
+index.html as our index file)
+• main.ts bootstraps AppModule
+• AppModule specifies that AppComponent is the top level component
+• and then AppComponent renders the rest of our app!
+
+#
+
+The recommended way in Angular, and in many modern web frameworks (such as React), is to adopt
+a pattern of one-way data binding. That is, your data flows only down through components. If
+you need to make changes, you emit events that cause changes to happen “at the top” which then
+trickle down.
+
+One-way data binding can seem like it adds some overhead in the beginning but it saves a lot of
+complication around change detection and it makes your systems easier to reason about.
+
+#
+
+Thankfully there are two major contenders for managing your data architecture:
+1. Use an Observables-based architecture like RxJS
+2. Use a Flux-based architecture
+
+#
+
+The two fundamental objects in Angular forms are FormControl and FormGroup.
+
+<!-- part of some bigger form -->
+<input type="text" [formControl]="name" />
+
+This will create a new FormControl object within the context of our form. We’ll talk more about
+how that works below.
+
+let personInfo = new FormGroup({
+	firstName: new FormControl("Nate"),
+	lastName: new FormControl("Murray"),
+	zip: new FormControl("90210")
+})
+
+FormGroup and FormControl have a common ancestor (AbstractControl43). That means we can
+check the status or value of personInfo just as easily as a single FormControl:
+
+#
+
+FormsModule gives us ngForm
+
+First we have #f="ngForm". The #v=thing syntax says that we want to create a local variable for
+this view.
+
+Here we’re creating an alias to ngForm, for this view, bound to the variable #f. Where did ngForm
+come from in the first place? It came from the NgForm directive.
+
+And what type of object is ngForm? It is a FormGroup. That means we can use f as a FormGroup in
+our view. And that’s exactly what we do in the (ngSubmit) output.
+
+#
+			What is ngModel attached to input element ?
+			
+<input type="text"
+ id="skuInput"
+ placeholder="SKU"
+ name="sku" ngModel
+>
+
+There are a couple of different ways to specify ngModel in your templates and this is the first. When
+we use ngModel with no attribute value we are specifying:
+
+1. a one-way data binding
+2. we want to create a FormControl on this form with the name sku (because of the name attribute
+on the input tag)
+
+NgModel creates a new FormControl that is automatically added to the parent FormGroup (in this
+case, on the form) and then binds a DOM element to that new FormControl. That is, it sets up an
+association between the input tag in our view and the FormControl and the association is matched
+by a name, in this case "sku".
+
+#
+
+Remember:
+To create a new FormGroup and FormControls implicitly use:
+• ngForm and
+• ngModel
+But to bind to an existing FormGroup and FormControls use:
+• formGroup and
+• formControl
+
+#
+
+Field Error
+
+<div class="field"
+[class.error]="!sku.valid && sku.touched">
+
+
+<div *ngIf="sku.hasError('required')"
+
+Note that hasError is defined on both FormControl and FormGroup.
+
+
+#
+
+this.myForm = fb.group({
+	'sku': ['', Validators.required]
+});
+
+this.myForm.valueChanges.subscribe(
+ (form: any) => {
+	console.log('form changed to:', form);
+	}
+ );
+}
+
+#
+
+-----------------------------------
+
+	Dependency Injection Parts
+
+-----------------------------------
+
+• The Provider (also often referred to as a binding) maps a token (that can be a string or a class)
+to a list of dependencies. It tells Angular how to create an object, given a token.
+
+• the Injector that holds a set of bindings and is responsible for resolving dependencies and
+injecting them when creating objects
+
+• the Dependency that is what’s being injected
+
+#
+
+P 196
+
+// Create an _injector_ and ask for it to resolve and create a UserService
+const injector: any = ReflectiveInjector.resolveAndCreate([UserService]);
+
+// use the injector to **get the instance** of the UserService
+this.userService = injector.get(UserService);
+
+#
+
+/* Angular will inject the singleton instance of `UserService` here. */
+/* We set it as a property with `private`. */
+
+constructor(private userService: UserService) { }
+
+** It’s important to know that when we put the UserService on the constructor of the UserDemoComponent,
+Angular knows what to inject (and how) 
+**because we listed UserService in the providers key of our NgModule.
+
+-- It does not inject arbitrary classes. You must configure an NgModule for DI to work.
+
+# Using a value as constant
+
+We inject value like:-
+
+import { Inject } from '@angular/core';
+
+export class AnalyticsDemoComponent {
+	constructor(@Inject('API_URL') apiUrl: string) {
+	}
+}
+
+In the providers:-
+
+{ provide: 'APIKey', useValue: 'ABC1234' }
+
+#
+
+Angular 2 offers us the following type of providers:
+
+Class Provider (useClass)
+
+FactoryProvider (useFactory)
+
+Aliased Class Provider (useExisting)
+
+Value Provider (useValue)
+
+https://codecraft.tv/courses/angular/dependency-injection-and-providers/providers/
+https://angular.io/guide/dependency-injection#injectable-ngmodule-or-component
+
+#
+
+Dealing with asynchronous code is, historically, more tricky than dealing with synchronous code.
+In JavaScript, there are generally three approaches to dealing with async code:
+1. Callbacks
+2. Promises
+3. Observables
+
+
+#
+
+Patrick Stapleton has an excellent repository named angular2-webpack-starter51. This repo
+has an RxJS example which autocompletes Github repositories. Some of the ideas in this
+section are inspired from that example. It’s a fantastic project with lots of examples and
+you should check it out.
+
+#
+		* Example of how to return observable response.
+		
+    search(query: string): Observable<SearchResult[]> {
+      const queryUrl = `${this.apiUrl}?${params}`;
+      return this.http.get(queryUrl)
+      .map((response: Response) => {
+        return (<any>response.json()).items.map(item => {
+          // console.log("raw item", item); // uncomment if you want to debug
+          return new SearchResult({
+            id: item.id.videoId,
+          });
+        });
+      });
+    }
+		
+#
+
+ngOnInit is a good place to do initialization (vs. the constructor) because inputs set on a component
+are not available in the constructor.
+

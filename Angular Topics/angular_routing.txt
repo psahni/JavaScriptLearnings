@@ -1,0 +1,23 @@
+import {Routes, RouterModule} from "@angular/router";
+
+const routes: Routes = [
+{ path: '', component: HomeComponent },
+{ path: 'search', component: SearchComponent }
+];
+
+
+We need to add a directive called router-outlet somewhere in our template HTML. This directive
+tells Angular where it should insert each of those components in the route, we’ll add ours to the
+AppComponent, like so:
+
+<app-header></app-header>
+<div class="m-t-1">
+<router-outlet></router-outlet> ①
+</div>
+
+{path: '**', component: HomeComponent} 
+
+if the URL doesn’t match any of the otherroutes it will match this route
+
+RouterModule.forRoot(routes, {useHash: true})
+

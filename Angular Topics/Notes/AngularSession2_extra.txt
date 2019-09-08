@@ -1,0 +1,92 @@
+https://github.com/catamphetamine/libphonenumber-js#phonenumber
+
+ng g directive formatPhone
+create src/app/format-phone.directive.spec.ts (245 bytes)
+create src/app/format-phone.directive.ts (151 bytes)
+update src/app/app.module.ts (407 bytes)
+
++12133734253
++918699547756
+	
+	
+https://angular.io/api/core/Renderer#setElementStyle
+
+____________________________________________________________________________________________________________________________
+
+<input type='textbox' appFormatPhone="IN"/>
+ 
+import { parsePhoneNumber, AsYouType, CountryCode } from 'libphonenumber-js'
+import { Directive, Input, OnInit, HostListener, ElementRef, Renderer, Renderer2 } from '@angular/core';
+
+@Directive({
+  selector: '[appFormatPhone]'
+})
+export class FormatPhoneDirective implements OnInit {
+  errorElement;
+
+  constructor(private el: ElementRef, private renderer: Renderer) { }
+
+  @Input() appFormatPhone: CountryCode;
+
+  @HostListener('blur') format() {
+
+    try {
+      const parsedValue =  parsePhoneNumber(this.el.nativeElement.value, (this.appFormatPhone || 'US'));
+      this.el.nativeElement.value = parsedValue.formatInternational();
+
+      if (this.errorElement) {
+        this.renderer.setElementStyle(this.errorElement, 'display', 'none');
+      }
+    } catch (err) {
+      if (!this.errorElement) {
+        this.errorElement = this.renderer.createElement(this.el.nativeElement.parentNode, 'span');
+        this.renderer.setElementClass(this.errorElement, 'error', true);
+      }
+
+      this.errorElement.innerHTML = 'Not a valid phone number';
+      this.errorElement.style.display = 'inline';
+    }
+
+
+  }
+
+
+
+  ngOnInit() {
+    // console.log(this.appFormatPhone);
+
+  }
+}
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ng-content
+
+app.component.html
+
+<div class='app-main'>
+  <div class='body'>
+    <h1>This is a demo app</h1>
+      <!-- <input type='textbox' appFormatPhone="IN"/> -->
+      <app-card>
+          <ng-container header>
+            Header Part
+          </ng-container>
+          <div class='content'>
+              Content Part
+          </div>
+          <div class='footer'>
+              Footer
+          </div>
+      </app-card>
+  </div>
+</div>
+
+
+card.component.html
+<div>
+  This is a card component..
+  <div class='card-header'><ng-content select='[header]'></ng-content></div>
+  <ng-content select='.content'></ng-content>
+  <ng-content select='.footer'></ng-content>
+</div>
+

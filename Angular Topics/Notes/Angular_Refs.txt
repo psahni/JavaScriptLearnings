@@ -1,0 +1,32 @@
+NGRX
+https://github.com/ngrx/platform/blob/master/docs/store/README.md
+
+
+Selectors
+https://toddmotto.com/ngrx-store-understanding-state-selectors
+
+Example App
+http://ngrx.github.io/example-app/#/
+http://zalmoxisus.github.io/examples/todomvc/
+https://github.com/zalmoxisus/redux-devtools-extension
+https://www.youtube.com/watch?v=cyaAhXHhxgk
+https://stackoverflow.com/questions/35633684/how-to-get-current-value-of-state-object-with-ngrx-store
+
+
+a BehaviorSubject
+a ReplaySubject,
+
+https://stackoverflow.com/questions/34376854/delegation-eventemitter-or-observable-in-angular
+http://plnkr.co/edit/XqwwUM44NQEpxQVFFxNW?p=preview
+https://scotch.io/tutorials/rxjs-operators-for-dummies-forkjoin-zip-combinelatest-withlatestfrom
+
+
+Angular CLI and Webpack
+https://hackernoon.com/webpack-for-angular-developers-c8584a60e627
+
+
+View child
+https://alligator.io/angular/viewchild-access-component/
+
+Content Children
+https://medium.com/@tkssharma/understanding-viewchildren-viewchild-contentchildren-and-contentchild-b16c9e0358e

@@ -1,0 +1,54 @@
+UI Component Work
+
+Task 1
+	- npm package that can installed from local machine
+	- How to develop a simple angular component and package it as node module
+
+Task 2	
+	Demo Application
+	- Make a small component inside and display it in your test application
+
+
+
+
+Permission error
+	npm adduser
+
+Publish locally
+	npm link
+
+	npm install C:\Users\prashantkumar.sahni\AppData\Roaming\npm\node_modules\psahni-my_node_pkg --save-dev
+
+
+
+
+	################################################################################################
+
+	https://medium.com/@the1mills/how-to-test-your-npm-module-without-publishing-it-every-5-minutes-1c4cb4b369be
+
+	https://blog.angularindepth.com/creating-a-library-in-angular-6-87799552e7e5
+
+	https://github.com/t-palmer/example-ng6-lib
+	################################################################################################
+
+
+	https://github.com/TypeCtrl/ngx-github-buttons
+
+	################################################################################################
+
+
+
+Prashant@GL>/c/Prashant/angularWorld/angular-node-packages/example-ng6-lib:  (master)
+>ng build example-ng6-lib
+Building Angular Package
+
+/c/Prashant/angularWorld/angular-node-packages/example-ng6-lib:  (master)
+>npm link
+
+Path:
+C:\Users\prashantkumar.sahni\AppData\Roaming\npm\node_modules\example-ng6-lib\lib
+
+
+https://juristr.com/blog/2016/02/debugging-angular2-console/
+https://blog.angularindepth.com/everything-you-need-to-know-about-debugging-angular-applications-d308ed8a51b4
+https://medium.com/front-end-hacking/a-guide-to-debugging-angular-applications-5a36bd88b4cf

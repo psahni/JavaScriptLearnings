@@ -1,0 +1,16 @@
+import { Component, ViewChildren, AfterViewInit, QueryList } from '@angular/core';
+import { MyComponent } from './mycomponent.component';
+
+export class ParentComponent implements AfterViewInit
+{
+
+    @ViewChildren(MyComponent) childrenComponent: QueryList<MyComponent>;
+
+    public ngAfterViewInit(): void
+    {
+        this.childrenComponent.changes.subscribe((comps: QueryList<MyComponent>) =>
+        {
+            // Now you can access the child component
+        });
+    }
+}
